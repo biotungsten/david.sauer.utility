@@ -1,0 +1,11 @@
+Package: david.sauer.utility
+Title: Contains my personal utility functions for research.
+Version: 0.0.0.9000
+Authors@R: 
+    person("David", "Sauer", , "sauerdavid13@gmail.com",
+           comment = c(GITHUB = "biotungsten"))
+Description: Contains my personal utility functions for research.
+License:
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.2
