@@ -7,7 +7,7 @@ dose.response.plot <- function(aggregated.data, model.data, title, x.upper.lim, 
   print(2)
   prediction.concentrations <- seq(0, x.upper.lim, 0.1)
   predicted.data <- data.frame(concentration = prediction.concentrations,
-                               r = predict(model.data, data.frame(concentration = prediction.concentrations)))
+                               ratio.mean = predict(model.data, data.frame(concentration = prediction.concentrations)))
   View(predicted.data)
   ec50 <- coefficients(model.data)[1]
   n <- coefficients(model.data)[2]
@@ -18,7 +18,7 @@ dose.response.plot <- function(aggregated.data, model.data, title, x.upper.lim, 
 
   p <- ggplot(data = predicted.data,
               mapping = aes(x = concentration,
-                            y = r)) +
+                            y = ratio.mean)) +
     scale_x_log10(limits = c(NA,x.upper.lim),
                   expand = c(0,0)) +
     scale_y_continuous(limits = c(0, NA),
