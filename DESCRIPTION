@@ -2,7 +2,7 @@ Package: david.sauer.utility
 Title: Contains my personal utility functions for research.
 Version: 0.0.0.9000
 Authors@R: 
-    person("David", "Sauer", email = "sauerdavid13@gmail.com",
+    person("David", "Sauer", email = "sauerdavid13@gmail.com", role = c("cre", "aut"),
            comment = c(GITHUB = "biotungsten"))
 Description: Contains my personal utility functions for research.
 License:
