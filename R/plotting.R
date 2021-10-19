@@ -1,6 +1,6 @@
 #' TBD
 #' @export
-dose.response.plot <- function(aggregated.data, model.data, title, x.upper.lim, xlab, ylab, filename) {
+dose.response.plot <- function(aggregated.data, model.data, title, x.upper.lim, xlab, ylab, filename, no.conf = FALSE) {
   remove.ctrl <- function(df) {
     return(df[df$substance != "control", ])
   }
@@ -43,10 +43,6 @@ dose.response.plot <- function(aggregated.data, model.data, title, x.upper.lim, 
                size = 5,
                stroke = .15,
                color = "turquoise4") +
-    labs(x = xlab,
-         y = ylab,
-         title = title,
-         subtitle = paste("EC50 (95%): ", ec50.confint.lower, " - ", ec50.confint.upper, ", n (95%): ", n.confint.lower, " - ", n.confint.upper, sep="")) +
     geom_segment(mapping = aes(x = ec50,
                                y = 0,
                                xend = ec50,
@@ -54,5 +50,11 @@ dose.response.plot <- function(aggregated.data, model.data, title, x.upper.lim, 
                  linetype = "dotted",
                  size = .25) +
     coord_cartesian(clip = "off")
+  if (!no.conf) {
+    p <- p + labs(x = xlab,
+                  y = ylab,
+                  title = title,
+                  subtitle = paste("EC50 (95%): ", ec50.confint.lower, " - ", ec50.confint.upper, ", n (95%): ", n.confint.lower, " - ", n.confint.upper, sep=""))
+  }
   ggsave(paste(filename, "plot", format(Sys.time(), "%d-%m-%Y.jpg"), sep="_"), dpi = "retina", device = "jpg")
 }
