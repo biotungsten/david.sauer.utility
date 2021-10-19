@@ -6,7 +6,7 @@ plot.dose.response <- function(aggregated.data, model.data, title, x.upper.lim, 
   }
 
   prediction.concentrations <- seq(0, x.upper.lim, 0.1)
-  predicted.data <- data.frame(concentrations = prediction.concentrations,
+  predicted.data <- data.frame(concentrations = prediction.concentration,
                                response = predict(model.data, data.frame(concentrations = prediction.concentrations)))
 
   ec50 <- coefficients(model.data)[1]
