@@ -1,9 +1,13 @@
 #' TBD
 #' @export
-plot.dose.response <- function(aggregated.data, model.data, predicted.data, title, x.upper.lim, xlab, ylab, filename) {
+plot.dose.response <- function(aggregated.data, model.data, title, x.upper.lim, xlab, ylab, filename) {
   remove.ctrl <- function(df) {
     return(df[df$substance != "control", ])
   }
+
+  prediction.concentrations <- seq(0:x.upper.lim, 0.1)
+  predicted.data <- data.frame(concentrations = prediction.concentrations,
+                               response = predict(model.data, prediction.concentrations))
 
   ec50 <- coefficients(model.data)[1]
   n <- coefficients(model.data)[2]
@@ -14,7 +18,7 @@ plot.dose.response <- function(aggregated.data, model.data, predicted.data, titl
 
   p <- ggplot(data = predicted.data,
               mapping = aes(x = concentration,
-                            y = ratio.mean)) +
+                            y = response)) +
     scale_x_log10(limits = c(NA,x.upper.lim),
                   expand = c(0,0)) +
     scale_y_continuous(limits = c(0, NA),
