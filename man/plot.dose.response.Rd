@@ -4,16 +4,7 @@
 \alias{plot.dose.response}
 \title{TBD}
 \usage{
-\method{plot}{dose.response}(
-  aggregated.data,
-  model.data,
-  predicted.data,
-  title,
-  x.upper.lim,
-  xlab,
-  ylab,
-  filename
-)
+\method{plot}{dose.response}(aggregated.data, model.data, title, x.upper.lim, xlab, ylab, filename)
 }
 \description{
 TBD
