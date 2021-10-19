@@ -9,7 +9,8 @@ fit.hill.model <- function(data, response.variable.name = "response", guesses = 
                start = c(ec50 = guesses[1], n = guesses[2]),
                lower = c(ec50 = 0, n = 0),
                algorithm = "plinear",
-               trace = trace)
+               trace = trace,
+               control = control)
   if (print.summary) {
     print(summary(model))
   }

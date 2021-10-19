@@ -8,7 +8,10 @@ fit.hill.model(
   data,
   response.variable.name = "response",
   guesses = c(1, 1),
-  print.summary = TRUE
+  print.summary = TRUE,
+  algorithm = NA,
+  trace = FALSE,
+  control = nls.control()
 )
 }
 \arguments{
