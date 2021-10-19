@@ -1,6 +1,6 @@
 #' TBD
 #' @export
-plot.dose.response <- function(aggregated.data, model.data, title, x.upper.lim, xlab, ylab, filename) {
+dose.response.plot <- function(aggregated.data, model.data, title, x.upper.lim, xlab, ylab, filename) {
   remove.ctrl <- function(df) {
     return(df[df$substance != "control", ])
   }
