@@ -1,4 +1,5 @@
 #' TBD
+#' @export
 filter.data.by.substances <- function(data, substance.names, substance.colname = "substance", concentration.colname = "concentration", include.control = TRUE, concentrations.factors = TRUE) {
   substance.colindex = grep(substance.colname, colnames(data))
   concentration.colindex = grep(concentration.colname, colnames(data))

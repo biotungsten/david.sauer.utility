@@ -1,4 +1,5 @@
 #' Converts a label of the format X...-Y where X is the substance abbreviation and Y is the concentration. CTRL is treated as abbreviation for control.
+#' @export
 appl2.label.as.vector <- function(label){
   if(str_starts(label, "CTRL")){
     return(c("control", 0))
@@ -13,6 +14,7 @@ appl2.label.as.vector <- function(label){
 }
 
 #' TBD
+#' @export
 appl2.plot.dose.response <- function(aggregated.data, model.data, predicted.data, substance.name, x.upper.lim = 100) {
   plot.dose.response(aggregated.data = aggregated.data,
                      model.data = model.data,
