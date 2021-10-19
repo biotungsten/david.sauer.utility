@@ -8,7 +8,7 @@ dose.response.plot <- function(aggregated.data, model.data, title, x.upper.lim, 
   prediction.concentrations <- seq(0, x.upper.lim, 0.1)
   predicted.data <- data.frame(concentration = prediction.concentrations,
                                r = predict(model.data, data.frame(concentration = prediction.concentrations)))
-
+  View(predicted.data)
   ec50 <- coefficients(model.data)[1]
   n <- coefficients(model.data)[2]
   ec50.confint.upper <- round(confint(model.data)[1,][2], 2)
