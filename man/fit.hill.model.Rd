@@ -9,7 +9,7 @@ fit.hill.model(
   response.variable.name = "response",
   guesses = c(1, 1),
   print.summary = TRUE,
-  algorithm = NA,
+  algorithm = "default",
   trace = FALSE,
   control = nls.control()
 )
