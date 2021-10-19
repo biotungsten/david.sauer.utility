@@ -2,9 +2,9 @@
 #' @param data A data frame providing the data, to which the model will be fitted. A column with concentrations (named concentrations) is required. It should contain in the same unit the concentrations for each measurement.
 #' @return A model object (nlsModel) fitted to the data provided.
 #' @export
-fit.hill.model <- function(data, response.variable.name = "response", guesses = c(1, 1), print.summary = TRUE) {
+fit.hill.model <- function(data, response.variable.name = "response", guesses = c(1, 1), print.summary = TRUE, algorithm = NA) {
   hill.formula <- as.formula(paste(response.variable.name, "~ 1/(1+(concentration/ec50)^n)"))
-  model <- nls(hill.formula, data = data, start = c(ec50 = guesses[1], n = guesses[2]), lower = c(ec50 = 0, n = 0))
+  model <- nls(hill.formula, data = data, start = c(ec50 = guesses[1], n = guesses[2]), lower = c(ec50 = 0, n = 0), algorithm = algorithm)
   if (print.summary) {
     print(summary(model))
   }
