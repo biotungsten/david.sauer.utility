@@ -9,10 +9,18 @@ dose.response.plot <- function(aggregated.data, model.data, title, x.upper.lim, 
                                ratio.mean = predict(model.data, data.frame(concentration = prediction.concentrations)))
   ec50 <- coefficients(model.data)[1]
   n <- coefficients(model.data)[2]
-  ec50.confint.upper <- round(confint(model.data)[1,][2], 2)
-  ec50.confint.lower <- round(confint(model.data)[1,][1], 2)
-  n.confint.upper <- round(confint(model.data)[2,][2], 2)
-  n.confint.lower <- round(confint(model.data)[2,][1], 2)
+  if (!no.conf){
+    ec50.confint.upper <- round(confint(model.data)[1,][2], 2)
+    ec50.confint.lower <- round(confint(model.data)[1,][1], 2)
+    n.confint.upper <- round(confint(model.data)[2,][2], 2)
+    n.confint.lower <- round(confint(model.data)[2,][1], 2)
+  } else {
+    ec50.confint.upper <- ec50
+    ec50.confint.lower <- ec50
+    n.confint.upper <- n
+    n.confint.lower <- n
+  }
+
 
   p <- ggplot(data = predicted.data,
               mapping = aes(x = concentration,
@@ -47,12 +55,10 @@ dose.response.plot <- function(aggregated.data, model.data, title, x.upper.lim, 
                                yend = 0.5),
                  linetype = "dotted",
                  size = .25) +
-    coord_cartesian(clip = "off")
-  if (no.conf == FALSE) {
-    p <- p + labs(x = xlab,
-                  y = ylab,
-                  title = title,
-                  subtitle = paste("EC50 (95%): ", ec50.confint.lower, " - ", ec50.confint.upper, ", n (95%): ", n.confint.lower, " - ", n.confint.upper, sep=""))
-  }
+    coord_cartesian(clip = "off") +
+    labs(x = xlab,
+         y = ylab,
+         title = title,
+         subtitle = paste("EC50 (95%): ", ec50.confint.lower, " - ", ec50.confint.upper, ", n (95%): ", n.confint.lower, " - ", n.confint.upper, sep=""))
   ggsave(paste(filename, "plot", format(Sys.time(), "%d-%m-%Y.jpg"), sep="_"), dpi = "retina", device = "jpg")
 }
