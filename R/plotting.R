@@ -5,7 +5,7 @@ plot.dose.response <- function(aggregated.data, model.data, title, x.upper.lim, 
     return(df[df$substance != "control", ])
   }
 
-  prediction.concentrations <- seq(0:x.upper.lim, 0.1)
+  prediction.concentrations <- seq(0, x.upper.lim, 0.1)
   predicted.data <- data.frame(concentrations = prediction.concentrations,
                                response = predict(model.data, prediction.concentrations))
 
