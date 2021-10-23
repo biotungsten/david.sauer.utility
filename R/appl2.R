@@ -1,4 +1,4 @@
-#' Converts a label of the format X...-Y where X is the substance abbreviation and Y is the concentration. CTRL is treated as abbreviation for control.
+#' Converts a label of the format X...-Y-Z where X is the substance abbreviation and Y is the concentration and Z is a number indicating the batch. CTRL is treated as abbreviation for control.
 #' @export
 appl2.label.as.vector <- function(label){
   if(str_starts(label, "CTRL")){
@@ -10,6 +10,7 @@ appl2.label.as.vector <- function(label){
                            R = "resorcinol",
                            H = "hydrochinon")
   concentration <- as.numeric(str_split(label, "-")[[1]][2])
+  batch <- as.numeric(str_split(label, "-")[[1]][3])
   return(c(substance.name, concentration))
 }
 
