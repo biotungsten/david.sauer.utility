@@ -15,10 +15,10 @@ dose.response.plot <- function(aggregated.data, model.data, title, x.upper.lim, 
     n.confint.upper <- round(confint(model.data)[2,][2], 2)
     n.confint.lower <- round(confint(model.data)[2,][1], 2)
   } else {
-    ec50.confint.upper <- ec50
-    ec50.confint.lower <- ec50
-    n.confint.upper <- n
-    n.confint.lower <- n
+    ec50.confint.upper <- round(ec50, 2)
+    ec50.confint.lower <- round(ec50, 2)
+    n.confint.upper <- round(n, 2)
+    n.confint.lower <- round(n, 2)
   }
 
 
