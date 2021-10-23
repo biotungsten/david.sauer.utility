@@ -11,7 +11,7 @@ appl2.label.as.vector <- function(label){
                            H = "hydrochinon")
   concentration <- as.numeric(str_split(label, "-")[[1]][2])
   batch <- as.numeric(str_split(label, "-")[[1]][3])
-  return(c(substance.name, concentration))
+  return(c(substance.name, concentration, batch))
 }
 
 #' TBD
