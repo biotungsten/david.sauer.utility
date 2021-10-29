@@ -2,10 +2,10 @@
 % Please edit documentation in R/appl2.R
 \name{appl2.label.as.vector}
 \alias{appl2.label.as.vector}
-\title{Converts a label of the format X...-Y where X is the substance abbreviation and Y is the concentration. CTRL is treated as abbreviation for control.}
+\title{Converts a label of the format X...-Y-Z where X is the substance abbreviation and Y is the concentration and Z is a number indicating the batch. CTRL is treated as abbreviation for control. CTRL must also contain any number as concentration and its respective batch entry.}
 \usage{
 appl2.label.as.vector(label)
 }
 \description{
-Converts a label of the format X...-Y where X is the substance abbreviation and Y is the concentration. CTRL is treated as abbreviation for control.
+Converts a label of the format X...-Y-Z where X is the substance abbreviation and Y is the concentration and Z is a number indicating the batch. CTRL is treated as abbreviation for control. CTRL must also contain any number as concentration and its respective batch entry.
 }

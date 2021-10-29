@@ -11,7 +11,8 @@ dose.response.plot(
   x.upper.lim,
   xlab,
   ylab,
-  filename
+  filename,
+  no.conf = FALSE
 )
 }
 \description{
