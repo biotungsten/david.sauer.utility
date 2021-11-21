@@ -8,7 +8,7 @@ filter.data.by.substances <- function(data, substance.names, substance.colname =
   }
   filtered.data <- data[data[,substance.colindex] %in% substance.names, ]
   if (concentrations.factors) {
-    print(filtered.data[concentration.colindex][,])
+    print("filtered.data[concentration.colindex][,]")
     filtered.data[concentration.colindex] <- my.as.numeric.factor(filtered.data[concentration.colindex][,])
   }
   return(filtered.data)
