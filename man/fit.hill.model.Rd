@@ -7,7 +7,8 @@
 fit.hill.model(
   data,
   response.variable.name = "response",
-  guesses = c(1, 1),
+  guesses = c(ec50 = 1, n = 1),
+  lower = c(ec50 = 0, n = 0),
   print.summary = TRUE,
   algorithm = "default",
   trace = FALSE,
