@@ -9,7 +9,7 @@ fit.hill.model <- function(data, response.variable.name = "response", guesses = 
 #' TBD
 #' @export
 fit.exp.model <- function(data, response.variable.name = "response", guesses = c(a=1), lower=c(a=0), print.summary = TRUE, algorithm = "default", trace = FALSE, control = nls.control()) {
-  fit.generic.model("exp(-a*concentration)", data, data, response.variable.name, guesses, print.summary, algorithm, trace, control)
+  fit.generic.model("exp(-a*concentration)", data, response.variable.name, guesses, print.summary, algorithm, trace, control)
 }
 
 #' TBD
