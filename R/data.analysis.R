@@ -3,7 +3,7 @@
 #' @return A model object (nlsModel) fitted to the data provided.
 #' @export
 fit.hill.model <- function(data, response.variable.name = "response", guesses = c(ec50=1, n=1), lower = c(ec50 = 0, n = 0), print.summary = TRUE, algorithm = "default", trace = FALSE, control = nls.control()) {
-  fit.generic.model("1/(1+(concentration/ec50)^n)", data, data, response.variable.name, guesses, lower, print.summary, algorithm, trace, control)
+  fit.generic.model("1/(1+(concentration/ec50)^n)", data, response.variable.name, guesses, lower, print.summary, algorithm, trace, control)
 }
 
 #' TBD
