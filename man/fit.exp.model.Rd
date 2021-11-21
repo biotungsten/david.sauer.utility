@@ -7,8 +7,8 @@
 fit.exp.model(
   data,
   response.variable.name = "response",
-  guesses = c(a = 1),
-  lower = c(a = 0),
+  guesses = list(a = 1),
+  lower = list(a = 0),
   print.summary = TRUE,
   algorithm = "default",
   trace = FALSE,

@@ -6,7 +6,7 @@
 \usage{
 fit.generic.model(
   equation,
-  data,
+  provided.data,
   response.variable.name,
   guesses,
   lower,
