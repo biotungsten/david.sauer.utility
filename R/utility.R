@@ -10,3 +10,9 @@ my.as.numeric.factor <- function(x) {
 as.idx.colname <- function(data, name) {
   return(grep(paste("^",name,"$", sep=""), colnames(data)))
 }
+
+#' TBD
+#' @export
+as.idx.rowname <- function(data, name) {
+  return(grep(paste("^",name,"$", sep=""), rownames(data)))
+}
