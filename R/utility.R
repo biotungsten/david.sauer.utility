@@ -1,7 +1,8 @@
 #' TBD
 #' @export
 my.as.numeric.factor <- function(x) {
-  print(x)
+  print(x[])
+  print(x[,])
   return(as.numeric(as.character(x[,])))
 }
 
