@@ -2,22 +2,22 @@
 #' @param data A data frame providing the data, to which the model will be fitted. A column with concentrations (named concentrations) is required. It should contain in the same unit the concentrations for each measurement.
 #' @return A model object (nlsModel) fitted to the data provided.
 #' @export
-fit.hill.model <- function(data, response.variable.name = "response", guesses = c(ec50=1, n=1), lower = c(ec50 = 0, n = 0), print.summary = TRUE, algorithm = "default", trace = FALSE, control = nls.control()) {
+fit.hill.model <- function(data, response.variable.name = "response", guesses = list(ec50=1, n=1), lower = list(ec50 = 0, n = 0), print.summary = TRUE, algorithm = "default", trace = FALSE, control = nls.control()) {
   fit.generic.model("1/(1+(concentration/ec50)^n)", data, response.variable.name, guesses, lower, print.summary, algorithm, trace, control)
 }
 
 #' TBD
 #' @export
-fit.exp.model <- function(data, response.variable.name = "response", guesses = c(a=1), lower=c(a=0), print.summary = TRUE, algorithm = "default", trace = FALSE, control = nls.control()) {
+fit.exp.model <- function(data, response.variable.name = "response", guesses = list(a=1), lower=list(a=0), print.summary = TRUE, algorithm = "default", trace = FALSE, control = nls.control()) {
   fit.generic.model("exp(-a*concentration)", data, response.variable.name, guesses, print.summary, algorithm, trace, control)
 }
 
 #' TBD
 #' @export
-fit.generic.model <- function(equation, data, response.variable.name, guesses, lower, print.summary, algorithm, trace, control) {
+fit.generic.model <- function(equation, provided.data, response.variable.name, guesses, lower, print.summary, algorithm, trace, control) {
   hill.formula <- as.formula(paste(response.variable.name, "~", equation))
   model <- nls(hill.formula,
-               data = data,
+               data = provided.data,
                start = guesses,
                lower = lower,
                algorithm = algorithm,
