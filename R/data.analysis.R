@@ -15,8 +15,8 @@ fit.exp.model <- function(data, response.variable.name = "response", guesses = l
 #' TBD
 #' @export
 fit.generic.model <- function(equation, provided.data, response.variable.name, guesses, lower, print.summary, algorithm, trace, control) {
-  hill.formula <- as.formula(paste(response.variable.name, "~", equation))
-  model <- nls(hill.formula,
+  form <- as.formula(paste(response.variable.name, "~", equation))
+  model <- nls(form,
                data = provided.data,
                start = guesses,
                lower = lower,
