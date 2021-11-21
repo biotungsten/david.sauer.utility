@@ -21,6 +21,14 @@ dose.response.plot <- function(aggregated.data, model.data, title, x.upper.lim, 
     n.confint.lower <- round(n, 2)
   }
 
+  process.lower.error.bars <- function(vec){
+    sapply(vec, function(x){
+      if (x < 0) {
+        return(0)
+      }
+      return(x)
+    })
+  }
 
   p <- ggplot(data = predicted.data,
               mapping = aes(x = concentration,
@@ -37,7 +45,7 @@ dose.response.plot <- function(aggregated.data, model.data, title, x.upper.lim, 
           plot.margin = unit(c(1,1,1,1),"cm")) +
     geom_line() +
     geom_errorbar(data = remove.ctrl(aggregated.data),
-                  mapping = aes(ymin = ratio.mean-ratio.sd,
+                  mapping = aes(ymin = process.lower.error.bars(ratio.mean-ratio.sd), #error bars are capped at 0
                                 ymax = ratio.mean+ratio.sd),
                   color = "turquoise4",
                   alpha = 0.7,
