@@ -14,6 +14,13 @@ fit.exp.model <- function(data, response.variable.name = "response", guesses = l
 
 #' TBD
 #' @export
+fit.sq.model <- function(data, response.variable.name = "response", guesses = list(a=1,b=1,c=1), lower=list(a=NULL,b=0,c=0), print.summary = TRUE, algorithm = "default", trace = FALSE, control = nls.control()) {
+  fit.generic.model("a*concentration^(x+b)+c", data, response.variable.name, guesses, lower, print.summary, algorithm, trace, control)
+}
+
+
+#' TBD
+#' @export
 fit.generic.model <- function(equation, provided.data, response.variable.name, guesses, lower, print.summary, algorithm, trace, control) {
   form <- as.formula(paste(response.variable.name, "~", equation))
   model <- nls(form,
