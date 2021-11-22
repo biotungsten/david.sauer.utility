@@ -8,7 +8,7 @@ fit.sq.model(
   data,
   response.variable.name = "response",
   guesses = list(a = 1, b = 1, c = 1),
-  lower = list(a = 0, b = 0, c = 0),
+  lower = list(a = NULL, b = 0, c = 0),
   print.summary = TRUE,
   algorithm = "default",
   trace = FALSE,
